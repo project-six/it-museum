@@ -7,6 +7,10 @@ class HallModel(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Зал"
+        verbose_name_plural = "Залы"
+
 
 class ExhibitModel(models.Model):
     name = models.CharField(max_length=100)
@@ -17,7 +21,15 @@ class ExhibitModel(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Экспонат"
+        verbose_name_plural = "Экспонаты"
+
 
 class PictureModel(models.Model):
     image = models.ImageField()
     exhibit = models.ForeignKey(ExhibitModel, related_name="images", on_delete="NULL")
+
+    class Meta:
+        verbose_name = "Изображение"
+        verbose_name_plural = "Изображения"

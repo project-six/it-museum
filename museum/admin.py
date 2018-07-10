@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import HallModel, ExhibitModel, PictureModel
+
+admin.site.register(HallModel)
+admin.site.register(ExhibitModel)
+admin.site.register(PictureModel)

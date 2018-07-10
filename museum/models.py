@@ -15,7 +15,8 @@ class HallModel(models.Model):
 class ExhibitModel(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    date = models.DateField()
+    epoch = models.CharField(max_length=32)
+    country = models.CharField(max_length=2)
     hall = models.ForeignKey(HallModel, related_name="exhibits", on_delete="RESTRICT")
 
     def __str__(self):

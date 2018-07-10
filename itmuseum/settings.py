@@ -66,8 +66,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'itmuseum',
-        'USER': 'root',
-        'PASSWORD': 'Vw5954gd',
+        'USER': 'nick',
+        'PASSWORD': 'Nikk1099',
         'HOST': '89.108.65.196',
         'PORT': '3306',
     }

@@ -1,0 +1,32 @@
+body {
+    background-color: #202124;
+    font-family: "Roboto", "Helvetica Neue", "Arial", sans-serif;
+    color: #eee;
+}
+
+.navbar-brand {
+    font-family: "Roboto Mono", "Monaco", monospace;
+    text-transform: uppercase;
+    height: 60px;
+    line-height: 60px;
+    padding: 0;
+}
+
+.navbar-site {
+    background-color: #202124;
+    height: 60px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-toggle {
+    margin-top: 13px;
+}
+
+.title {
+    font-size: 72px;
+}
+
+.subtitle {
+    font-size: 36px;
+    color: #ccc;
+}

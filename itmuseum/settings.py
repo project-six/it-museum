@@ -64,12 +64,13 @@ WSGI_APPLICATION = 'itmuseum.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'itmuseum',
-        'USER': 'nick',
-        'PASSWORD': 'Nikk1099',
-        'HOST': '89.108.65.196',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'database.sqlite3',
+        # 'NAME': 'itmuseum',
+        # 'USER': 'nick',
+        # 'PASSWORD': 'Nikk1099',
+        # 'HOST': '89.108.65.196',
+        # 'PORT': '3306',
     }
 }
 

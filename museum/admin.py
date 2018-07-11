@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import HallModel, ExhibitModel, PictureModel
+from .models import Hall, Exhibit, Picture
 
-admin.site.register(HallModel)
-admin.site.register(ExhibitModel)
-admin.site.register(PictureModel)
+admin.site.register(Hall)
+admin.site.register(Exhibit)
+admin.site.register(Picture)

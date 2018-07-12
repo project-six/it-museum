@@ -31,7 +31,7 @@ class Exhibit(models.Model):
 
 
 class Picture(models.Model):
-    image = models.ImageField(verbose_name="изображение")
+    image = models.ImageField(upload_to='img', verbose_name="изображение")
     exhibit = models.ForeignKey(Exhibit, related_name="images", on_delete="NULL", verbose_name="экспонат")
 
     class Meta:

@@ -19,12 +19,11 @@ def hall(request, hall_number):
     return render(
         request,
         'hall.html',
-        {'number': h.number,
-         'name': h.name,
-         'epoch': h.epoch,
+        {'hall': h,
          'prev': h_prev.number if hasattr(h_prev, 'number') else h.number,
          'next': h_next.number if hasattr(h_next, 'number') else h.number,
          'min': h_min.number,
-         'max': h_max.number
+         'max': h_max.number,
+         'exhibits': h.exhibits.all()
          }
     )

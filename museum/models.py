@@ -2,7 +2,9 @@ from django.db import models
 
 
 class Hall(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Название")
+    number = models.IntegerField(verbose_name="Номер", unique=True)
+    name = models.CharField(max_length=100, verbose_name="Название", null=True)
+    epoch = models.CharField(max_length=50, verbose_name="Эпоха", null=True)
 
     def __str__(self):
         return self.name
@@ -15,8 +17,8 @@ class Hall(models.Model):
 class Exhibit(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название")
     description = models.TextField(verbose_name="Описание")
-    epoch = models.CharField(max_length=32, verbose_name="Год(-ы)")
-    country = models.CharField(max_length=2, verbose_name="Страна")
+    epoch = models.CharField(max_length=32, verbose_name="Год(-ы)", null=True)
+    country = models.CharField(max_length=2, verbose_name="Страна", null=True)
     hall = models.ForeignKey(Hall, related_name="exhibits", on_delete="RESTRICT", verbose_name="Зал")
 
     def __str__(self):

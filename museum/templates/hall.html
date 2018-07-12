@@ -1,5 +1,31 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block title %}
+    Зал {{ number }}. {{ name }} | IT-Museum
+{% endblock %}
 
+{% block content %}
+    <div class="row">
+        <div class="col-md-2">
+            {% if number != min %}
+                <a href="{% url 'hall' prev %}" class="btn btn-sm btn-outline-secondary">&laquo;</a>
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <h3>Зал {{ number }}</h3>
+
+            {% if name %}
+                <h1>{{ name }}</h1>
+            {% endif %}
+
+            {% if epoch %}
+                <h5>{{ epoch }}</h5>
+            {% endif %}
+        </div>
+        <div class="col-md 2">
+            {% if number != max %}
+                <a href="{% url 'hall' next %}" class="btn btn-sm btn-outline-secondary">&raquo;</a>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

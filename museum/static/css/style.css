@@ -30,3 +30,37 @@ body {
     font-size: 36px;
     color: #ccc;
 }
+
+.search-button-container:hover {
+    text-decoration: none;
+}
+
+.search-button-container:hover > #search-button {
+    background-color: #333;
+    transition: background-color .3s;
+}
+
+.search-form-element {
+    background-color: #202124;
+    border-color: #333333;
+    color: rgba(255, 255, 255, 0.5);
+    transition: background-color .3s;
+}
+
+.search-form-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-form-input:focus {
+    background-color: #333;
+    border-color: #333333;
+    color: #cccccc;
+    outline-style: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    transition: background-color .3s;
+}
+
+.search-icon {
+    opacity: 0.5;
+}

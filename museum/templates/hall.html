@@ -5,26 +5,25 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-2">
+    <div class="row mt-5">
+        <div class="col-md-2 d-flex align-items-center justify-content-center">
             {% if number != min %}
-                <a href="{% url 'hall' prev %}" class="btn btn-sm btn-outline-secondary">&laquo;</a>
+                <a href="{% url 'hall' prev %}" class="btn  btn-museum">&laquo; Предыдущий зал</a>
             {% endif %}
         </div>
         <div class="col-md-8">
-            <h3>Зал {{ number }}</h3>
+            <h4>Зал {{ number }}</h4>
 
             {% if name %}
-                <h1>{{ name }}</h1>
+                <h2>{{ name }}</h2>
             {% endif %}
 
-            {% if epoch %}
-                <h5>{{ epoch }}</h5>
-            {% endif %}
+            <h5 class="text-lighter">{% if epoch %}{{ epoch }}{% else %}{% endif %}</h5>
+
         </div>
-        <div class="col-md 2">
+        <div class="col-md-2 d-flex align-items-center justify-content-center">
             {% if number != max %}
-                <a href="{% url 'hall' next %}" class="btn btn-sm btn-outline-secondary">&raquo;</a>
+                <a href="{% url 'hall' next %}" class="btn  btn-museum">Следующий зал &raquo;</a>
             {% endif %}
         </div>
     </div>

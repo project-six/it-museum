@@ -7,3 +7,11 @@ def index(request):
         request,
         'index.html'
     )
+
+
+def hall(request, hall_number):
+    return render(
+        request,
+        'hall.html',
+        {'hall_number': hall_number}
+    )

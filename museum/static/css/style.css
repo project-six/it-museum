@@ -81,3 +81,24 @@ body {
 .text-lighter {
     color: #999;
 }
+
+.polaroid {
+    background-color: #fafafa;
+    width: 200px;
+    height: 250px;
+    display: inline-block;
+    padding: 10px;
+    margin: 5px 15px;
+}
+
+.polaroid > .polaroid-image {
+    background-size: cover;
+    display: block;
+    width: 180px;
+    height: 180px;
+}
+
+.polaroid > .polaroid-caption {
+    color: #000;
+    margin-top: 15px;
+}

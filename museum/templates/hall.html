@@ -26,11 +26,9 @@
     <div class="card-container">
         {% for e in exhibits %}
             <div class="polaroid">
-                <div class="polaroid-image">
-                    {% with e.images.all|first as image %}
-                        <img src="{{ image.image.url }}">
-                    {% endwith %}
-                </div>
+                {% with e.images.all|first as image %}
+                    <img class="polaroid-image" src="{{ image.image.url }}">
+                {% endwith %}
                 <div class="polaroid-caption">
                     <p>{{ e.name }}</p>
                 </div>

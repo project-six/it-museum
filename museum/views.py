@@ -3,9 +3,12 @@ from .models import Hall
 
 
 def index(request):
+    h_min = Hall.objects.order_by('number').first()
+
     return render(
         request,
-        'index.html'
+        'index.html',
+        {'min': h_min.number}
     )
 
 

@@ -60,6 +60,12 @@ body {
     color: #A6A6A6;
 }
 
+.btn-enter {
+    background-color: #008B00;
+    color: white;
+    border-color: transparent;
+}
+
 .search-form-input::placeholder {
     color: #A6A6A6;
 }

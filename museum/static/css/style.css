@@ -42,18 +42,31 @@ body {
 
 .search-form-element {
     background-color: #202124;
-    border-color: #333333;
-    color: rgba(255, 255, 255, 0.5);
+    border-color: #333;
+    color: #A6A6A6;
     transition: background-color .3s;
 }
 
+.btn-museum {
+    background-color: transparent;
+    border-color: #666;
+    color: #A6A6A6;
+}
+
+.btn-museum:hover {
+    text-decoration: none;
+    background-color: #333;
+    border-color: transparent;
+    color: #A6A6A6;
+}
+
 .search-form-input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    color: #A6A6A6;
 }
 
 .search-form-input:focus {
     background-color: #333;
-    border-color: #333333;
+    border-color: #333;
     color: #cccccc;
     outline-style: none;
     -webkit-box-shadow: none;
@@ -63,4 +76,37 @@ body {
 
 .search-icon {
     opacity: 0.5;
+}
+
+.text-lighter {
+    color: #999;
+}
+
+.polaroid {
+    background-color: #fafafa;
+    width: 250px;
+    height: 300px;
+    display: inline-flex;
+    flex-flow: column;
+    padding: 10px 10px 0;
+    margin: 5px 15px;
+}
+
+.polaroid > .polaroid-image {
+    background-size: cover;
+    display: block;
+    width: 230px;
+    height: 230px;
+    flex: 0 1 auto;
+}
+
+.polaroid > .polaroid-caption {
+    color: #000;
+    height: auto;
+    flex: 1 1 auto;
+    display: flex;
+}
+
+.polaroid > .polaroid-caption > p {
+    margin: auto;
 }

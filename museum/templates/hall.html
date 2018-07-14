@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Зал {{ hall.number }}. {{ hall.name }} | IT-Museum
+{% endblock %}
+
+{% block content %}
+    <div class="row my-5">
+        <div class="col-md-2 d-flex align-items-center justify-content-center">
+            {% if hall.number != min %}
+                <a href="{% url 'hall' prev %}" class="btn  btn-museum">&laquo; Предыдущий зал</a>
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <h4 class="mb-0">Зал {{ hall.number }}</h4>
+            <h2 class="mb-3">{{ hall.name }}</h2>
+            <h5 class="text-lighter">{% if hall.epoch %}{{ hall.epoch }}{% else %}&nbsp;{% endif %}</h5>
+
+        </div>
+        <div class="col-md-2 d-flex align-items-center justify-content-center">
+            {% if hall.number != max %}
+                <a href="{% url 'hall' next %}" class="btn  btn-museum">Следующий зал &raquo;</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="card-container">
+        {% for e in exhibits %}
+            <div class="polaroid">
+                {% with e.images.all|first as image %}
+                    <img class="polaroid-image" src="{{ image.image.url }}">
+                {% endwith %}
+                <div class="polaroid-caption">
+                    <p>{{ e.name }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

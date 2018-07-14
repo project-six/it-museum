@@ -27,6 +27,6 @@ def hall(request, hall_number):
          'next': h_next.number if hasattr(h_next, 'number') else h.number,
          'min': h_min.number,
          'max': h_max.number,
-         'exhibits': h.exhibits.all()
+         'exhibits': h.exhibits.filter(images__isnull=False)
          }
     )

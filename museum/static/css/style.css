@@ -102,8 +102,11 @@ body {
 
 .polaroid > .polaroid-caption {
     color: #000;
-    /*margin-top: 15px;*/
     height: auto;
-    border: 2px solid red;
-    flex: 0 1 auto;
+    flex: 1 1 auto;
+    display: flex;
+}
+
+.polaroid > .polaroid-caption > p {
+    margin: auto;
 }

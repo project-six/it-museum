@@ -30,3 +30,10 @@ def hall(request, hall_number):
          'exhibits': h.exhibits.filter(images__isnull=False)
          }
     )
+
+
+def propose(request):
+    return render(
+        request,
+        'propose.html'
+    )

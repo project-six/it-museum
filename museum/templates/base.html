@@ -29,7 +29,7 @@
     <div class="collapse navbar-collapse" id="top-menu">
         <ul class="navbar-nav ml-auto mr-3">
             <li class="nav-item">
-                <a class="nav-link">Предложить экспонат </a>
+                <a class="nav-link {% block propose_class %}{% endblock %}" href="{% url 'propose' %}">Предложить экспонат</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled">Книга отзывов</a>

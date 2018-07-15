@@ -7,8 +7,7 @@
 <div id="carousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         {% for img in e.images.all %}
-            {# FIXME active carousel item #}
-            <div class="carousel-item">
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
                 <img class="d-block w-100" src="{{ img.image.url }}">
             </div>
         {% endfor %}

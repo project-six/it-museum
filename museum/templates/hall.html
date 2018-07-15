@@ -25,7 +25,10 @@
     </div>
     <div class="card-container">
         {% for e in exhibits %}
-            <a class="polaroid-link no-blue-border" href="#" data-toggle="modal" data-target="#exhibitModal">
+            <a class="polaroid-link no-blue-border"
+               href="#" data-toggle="modal"
+               data-target="#exhibitModal"
+               data-eid="{{ e.id }}">
                 <div class="polaroid">
                     {% with e.images.all|first as image %}
                         <img class="polaroid-image" src="{{ image.image.url }}">
@@ -46,6 +49,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    <div id="modal-imported"></div>
                 </div>
             </div>
         </div>
@@ -53,10 +57,15 @@
 {% endblock %}
 
 {% block scripts %}
-    {# TODO убрать это после дебага #}
     <script>
-        $('#exhibitModal').modal({
-            show: true
+        $('#exhibitModal').on('show.bs.modal', function (event) {
+            const pressed = $(event.relatedTarget);
+            const eid = pressed.data('eid');
+            const e_url = "{% url 'exhibit' 12345 %}".replace(/12345/, eid.toString());
+
+            $.get(e_url, function (data) {
+                $('#modal-imported').html(data.toString());
+            })
         })
     </script>
 {% endblock %}

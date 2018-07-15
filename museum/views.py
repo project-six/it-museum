@@ -39,8 +39,8 @@ def propose(request):
     )
 
 
-def exhibit(request):
-    exh = get_object_or_404(Exhibit, id=request.GET.get('e_id', '-1'))
+def exhibit(request, e_id):
+    exh = get_object_or_404(Exhibit, id=e_id)
     return render(
         request,
         'exhibit_modal.html',

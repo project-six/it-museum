@@ -6,7 +6,7 @@
 </div>
 <div id="carousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-        {% for img in e.images %}
+        {% for img in e.images.all %}
             <div class="carousel-item active">
                 <img class="d-block w-100" src="{{ img.image.url }}">
             </div>

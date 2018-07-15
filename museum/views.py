@@ -46,3 +46,12 @@ def exhibit(request, e_id):
         'exhibit_modal.html',
         {'e': exh}
     )
+
+
+def hall_list(request):
+    halls = Hall.objects.all()
+    return render(
+        request,
+        'hall_list.html',
+        {'halls': halls}
+    )

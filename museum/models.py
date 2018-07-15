@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Hall(models.Model):
@@ -37,3 +38,14 @@ class Picture(models.Model):
     class Meta:
         verbose_name = "изображение"
         verbose_name_plural = "изображения"
+
+
+class Proposal(models.Model):
+    name = models.CharField(max_length=50, verbose_name="имя отправителя", blank=False)
+    email = models.EmailField(verbose_name="E-Mail", blank=False)
+    message = models.TextField(verbose_name="описание")
+    sent = models.DateTimeField(default=timezone.now, verbose_name="дата")
+
+    class Meta:
+        verbose_name = "предлагаемый экспонат"
+        verbose_name_plural = "предлагаемые экспонаты"

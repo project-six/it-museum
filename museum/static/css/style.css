@@ -102,6 +102,8 @@ body {
     flex-flow: column;
     padding: 10px 10px 0;
     margin: 5px 15px;
+    transition: transform .3s;
+
 }
 
 .polaroid > .polaroid-image {
@@ -122,6 +124,24 @@ body {
 .polaroid > .polaroid-caption > p {
     margin: auto;
 }
+
+.polaroid-link:hover {
+    text-decoration: none;
+}
+
+.polaroid-link:hover > .polaroid {
+    transform: scale(1.05);
+    transition: transform .3s;
+}
+
+.no-blue-border {
+    outline-style: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.modal {
+    color: #000;
 
 .halls-list {
 

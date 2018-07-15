@@ -1,0 +1,25 @@
+<h4>{{ e.name }}</h4>
+<h6>{{ e.country }}, {{ e.epoch }}</h6>
+<hr>
+<div class="text-left">
+    {{ e.description }}
+</div>
+<div id="carousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        {% for img in e.images %}
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{{ img.image.url }}">
+            </div>
+        {% endfor %}
+    </div>
+    <a class="carousel-control-prev" href="#carousel" role="button"
+       data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Предыдущее</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel" role="button"
+       data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Следующее</span>
+    </a>
+</div>

@@ -46,9 +46,17 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    Exhibit #1
                 </div>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    {# TODO убрать это после дебага #}
+    <script>
+        $('#exhibitModal').modal({
+            show: true
+        })
+    </script>
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Hall
+from .models import Hall, Exhibit
 
 
 def index(request):
@@ -36,4 +36,13 @@ def propose(request):
     return render(
         request,
         'propose.html'
+    )
+
+
+def exhibit(request):
+    exh = get_object_or_404(Exhibit, id=request.GET.get('e_id', '-1'))
+    return render(
+        request,
+        'exhibit_modal.html',
+        {'e': exh}
     )

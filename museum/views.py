@@ -37,3 +37,12 @@ def propose(request):
         request,
         'propose.html'
     )
+
+
+def hall_list(request):
+    halls = Hall.objects.all()
+    return render(
+        request,
+        'hall_list.html',
+        {'halls': halls}
+    )

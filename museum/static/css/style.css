@@ -116,3 +116,26 @@ body {
 .polaroid > .polaroid-caption > p {
     margin: auto;
 }
+
+.halls-list {
+
+    list-style-type: none;
+}
+
+.halls-list > li {
+}
+
+.halls-list > li > a {
+    color: white;
+    font-size: 32px;
+}
+
+.propose-field {
+    background-color: #333;
+    border-color: transparent;
+}
+
+.propose-field:focus {
+    background-color: white;
+    border-color: #A6A6A6;
+}

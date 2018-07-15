@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Hall
 
 
@@ -13,7 +13,7 @@ def index(request):
 
 
 def hall(request, hall_number):
-    h = Hall.objects.get(number=hall_number)
+    h = get_object_or_404(Hall, number=hall_number)
     h_min = Hall.objects.order_by('number').first()
     h_max = Hall.objects.order_by('number').last()
     h_prev = Hall.objects.filter(number__lt=h.number).order_by('number').last()

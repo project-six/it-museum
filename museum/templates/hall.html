@@ -25,14 +25,30 @@
     </div>
     <div class="card-container">
         {% for e in exhibits %}
-            <div class="polaroid">
-                {% with e.images.all|first as image %}
-                    <img class="polaroid-image" src="{{ image.image.url }}">
-                {% endwith %}
-                <div class="polaroid-caption">
-                    <p>{{ e.name }}</p>
+            <a class="polaroid-link no-blue-border" href="#" data-toggle="modal" data-target="#exhibitModal">
+                <div class="polaroid">
+                    {% with e.images.all|first as image %}
+                        <img class="polaroid-image" src="{{ image.image.url }}">
+                    {% endwith %}
+                    <div class="polaroid-caption">
+                        <p>{{ e.name }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+    <div class="modal fade" id="exhibitModal" tabindex="-1" role="dialog" aria-labelledby="exhibitName"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    Exhibit #1
                 </div>
             </div>
-        {% endfor %}
+        </div>
     </div>
 {% endblock %}

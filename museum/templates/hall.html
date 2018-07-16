@@ -6,7 +6,7 @@
 
 {% block content %}
     <nav aria-label="Навигация по залам" class="mt-5">
-        <ul class="pagination pagination-sm justify-content-center">
+        <ul class="pagination justify-content-center">
 {#            {% if hall.number != min %}#}
 {#                <li class="page-item">#}
 {#                    <a class="page-link" href="{% url 'hall' prev %}" aria-label="Предыдущий">#}
@@ -23,8 +23,8 @@
 {#                </li>#}
 {#            {% endif %}#}
             {% for h_it in all_halls %}
-                <li class="page-item {% if forloop.counter == hall.number %}active{% endif %}"><a class="page-link"
-                                                                                                  href="{% url 'hall' h_it.number %}">{{ h_it.number }}</a>
+                <li class="page-item {% if forloop.counter == hall.number %}active{% endif %}">
+                    <a class="page-link" href="{% url 'hall' h_it.number %}">{{ h_it.number }}</a>
                 </li>
             {% endfor %}
 {#            {% if hall.number != max %}#}
@@ -47,7 +47,7 @@
     <div class="row mb-3">
         <div class="col-md-2 d-flex align-items-center justify-content-center">
             {% if hall.number != min %}
-                <a href="{% url 'hall' prev %}" class="btn btn-museum">Предыдущий зал &raquo;</a>
+                <a href="{% url 'hall' prev %}" class="btn btn-museum">&laquo; Предыдущий зал</a>
             {% endif %}
         </div>
         <div class="col-md-8">
@@ -62,7 +62,6 @@
         </div>
     </div>
     <div class="card-container">
-        {# FIXME multiple cards for some reason #}
         {% for e in exhibits %}
             <a class="polaroid-link no-blue-border"
                href="#" data-toggle="modal"
@@ -82,7 +81,7 @@
 
     <div class="modal fade" id="exhibitModal" tabindex="-1" role="dialog" aria-labelledby="exhibitName"
          aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

@@ -171,3 +171,32 @@ body {
     background-color: #008b00;
     color: white;
 }
+
+.pagination {
+    border-radius: 0;
+}
+
+.pagination > .page-item > .page-link {
+    background-color: transparent;
+    color: #a6a6a6;
+    border: none;
+    width: 2.1em;
+    height: 2.1em;
+    border-radius: 5rem;
+    transition-property: background-color, color;
+    transition-duration: .3s;
+}
+
+.pagination > .page-item > .page-link:hover {
+    background-color: rgba(160, 160, 160, 0.15);
+    color: #fafafa;
+    transition-property: background-color, color;
+    transition-duration: .3s;
+}
+
+.pagination > .page-item.active > .page-link {
+    color: #25b525;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+}

@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+
+from museum.helpers import country_name
 from .models import Hall, Exhibit
 
 
@@ -27,7 +29,7 @@ def hall(request, hall_number):
          'next': h_next.number if hasattr(h_next, 'number') else h.number,
          'min': h_min.number,
          'max': h_max.number,
-         'exhibits': h.exhibits.filter().filter(images__isnull=False).order_by('order_number').distinct()
+         'exhibits': h.exhibits.filter().filter(images__isnull=False).order_by('order_year').distinct()
          }
     )
 
@@ -44,7 +46,8 @@ def exhibit(request, e_id):
     return render(
         request,
         'exhibit_modal.html',
-        {'e': exh}
+        {'e': exh,
+         'country': country_name(exh.country)}
     )
 
 

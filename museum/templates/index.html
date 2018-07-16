@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
     {{ block.super }}
@@ -16,5 +17,8 @@
         <a href="{% url 'hall_list' %}" class="list-halls-index">
             список залов
         </a>
+    </div>
+    <div class="museum-pic">
+        <img src="{% static 'img/Новый_музейсжат.png' %}">
     </div>
 {% endblock %}

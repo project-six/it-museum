@@ -32,7 +32,7 @@
                data-eid="{{ e.id }}">
                 <div class="polaroid">
                     {% with e.images.all|first as image %}
-                        <img class="polaroid-image" src="{{ image.image.url }}">
+                        <div class="polaroid-image" src="" style="background-image: url('{{ image.image.url }}')"></div>
                     {% endwith %}
                     <div class="polaroid-caption">
                         <p>{{ e.name }}</p>

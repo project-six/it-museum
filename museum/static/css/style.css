@@ -62,14 +62,14 @@ body {
 
 .btn-enter {
     background-color: transparent;
-    color: #8BC34A;
-    border-color: #8BC34A;
+    color: #1ea91e;
+    border-color: #1ea91e;
 }
 
 .btn-enter:hover {
-    background-color: #8BC34A;
+    background-color: #1ea91e;
     border-color: transparent;
-    color: white;
+    color: #eeeeee;
 }
 
 .search-form-input::placeholder {
@@ -142,6 +142,7 @@ body {
 
 .modal {
     color: #000;
+}
 
 .halls-list {
 
@@ -152,7 +153,7 @@ body {
 }
 
 .halls-list > li > a {
-    color: white;
+    color: #eee;
     font-size: 32px;
 }
 
@@ -162,11 +163,20 @@ body {
 }
 
 .propose-field:focus {
-    background-color: white;
+    background-color: #eeeeee;
     border-color: #A6A6A6;
 }
 
 .btn-propose:hover {
-    background-color: #008b00;
-    color: white;
+    background-color: #1ea91e;
+    color: #eee;
+}
+
+.list-halls-index {
+    color: #A6A6A6;
+    text-decoration-line: underline;
+}
+
+.list-halls-index:hover {
+    color: #eeeeee;
 }

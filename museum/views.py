@@ -1,5 +1,8 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from .models import Hall, Exhibit
+from django.urls import reverse
+
+from .models import Hall, Exhibit, Proposal
 
 
 def index(request):
@@ -33,10 +36,22 @@ def hall(request, hall_number):
 
 
 def propose(request):
-    return render(
-        request,
-        'propose.html'
-    )
+    if request.method == "POST":
+        try:
+            name = request.POST['name']
+            description = request.POST['description']
+        except KeyError:
+            render(request,
+                   'propose.html')
+        else:
+            proposal = Proposal(name=name, message=description)
+            proposal.save()
+            return HttpResponseRedirect(reverse('index'))
+    else:
+        return render(
+            request,
+            'propose.html'
+        )
 
 
 def exhibit(request, e_id):

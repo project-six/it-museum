@@ -41,8 +41,8 @@ class Picture(models.Model):
 
 
 class Proposal(models.Model):
-    name = models.CharField(max_length=50, verbose_name="имя отправителя", blank=False)
-    email = models.EmailField(verbose_name="E-Mail", blank=False)
+    name = models.CharField(max_length=50, verbose_name="имя отправителя", blank=False, null=False)
+    email = models.EmailField(verbose_name="E-Mail", blank=True, null=True)
     message = models.TextField(verbose_name="описание")
     sent = models.DateTimeField(default=timezone.now, verbose_name="дата")
 

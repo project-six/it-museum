@@ -263,3 +263,4 @@ $RECYCLE.BIN/
 *.iml
 
 \.idea/
+database.sqlite3

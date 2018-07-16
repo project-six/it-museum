@@ -7,7 +7,7 @@ class Hall(models.Model):
     epoch = models.CharField(max_length=50, verbose_name="эпоха", null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return "Зал " + str(self.number) + " \"" + self.name + "\" (ID: " + str(self.id) + ")"
 
     class Meta:
         verbose_name = "зал"
@@ -23,7 +23,7 @@ class Exhibit(models.Model):
     hall = models.ForeignKey(Hall, related_name="exhibits", on_delete="RESTRICT", verbose_name="зал")
 
     def __str__(self):
-        return self.name
+        return "\"" + self.name + "\" (ID: " + str(self.id) + ")"
 
     class Meta:
         verbose_name = "экспонат"
@@ -32,7 +32,11 @@ class Exhibit(models.Model):
 
 class Picture(models.Model):
     image = models.ImageField(upload_to='img', verbose_name="изображение")
+    name = models.CharField(max_length=255, verbose_name="описание", blank=True, null=True)
     exhibit = models.ForeignKey(Exhibit, related_name="images", on_delete="NULL", verbose_name="экспонат")
+
+    def __str__(self):
+        return "\"" + (self.name if self.name else "") + "\" (ID: " + str(self.id) + ")"
 
     class Meta:
         verbose_name = "изображение"

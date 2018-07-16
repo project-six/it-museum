@@ -41,11 +41,13 @@ def propose(request):
             name = request.POST['name']
             description = request.POST['description']
         except KeyError:
+            # TODO display error message
             render(request,
                    'propose.html')
         else:
             proposal = Proposal(name=name, message=description)
             proposal.save()
+            # TODO redirect to success page
             return HttpResponseRedirect(reverse('index'))
     else:
         return render(

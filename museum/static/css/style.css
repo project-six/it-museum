@@ -47,6 +47,55 @@ body {
     transition: background-color .3s;
 }
 
+.search-form-input::placeholder {
+    color: #A6A6A6;
+}
+
+.search-form-input:focus {
+    background-color: #333;
+    border-color: #333;
+    color: #cccccc;
+    outline-style: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    transition: background-color .3s;
+}
+
+.propose-field {
+    background-color: #333;
+    border-color: transparent;
+    color: #a6a6a6;
+    transition-property: color, background-color;
+    transition-duration: .3s;
+}
+
+.propose-field:focus {
+    background-color: #444;
+    border-color: #333;
+    color: #cccccc;
+    outline-style: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    transition-property: color, background-color;
+    transition-duration: .3s;
+}
+
+.btn-propose {
+    background-color: #555;
+    color: #ccc;
+    border-color: transparent;
+    transition-property: color, background-color, border-color;
+    transition-duration: .3s;
+}
+
+.btn-propose:hover {
+    background-color: #333;
+    color: #ccc;
+    border-color: #555;
+    transition-property: color, background-color, border-color;
+    transition-duration: .3s;
+}
+
 .btn-museum {
     background-color: transparent;
     border-color: #666;
@@ -70,20 +119,6 @@ body {
     background-color: #1ea91e;
     border-color: transparent;
     color: #eeeeee;
-}
-
-.search-form-input::placeholder {
-    color: #A6A6A6;
-}
-
-.search-form-input:focus {
-    background-color: #333;
-    border-color: #333;
-    color: #cccccc;
-    outline-style: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    transition: background-color .3s;
 }
 
 .search-icon {
@@ -155,21 +190,6 @@ body {
 .halls-list > li > a {
     color: #eee;
     font-size: 32px;
-}
-
-.propose-field {
-    background-color: #333;
-    border-color: transparent;
-}
-
-.propose-field:focus {
-    background-color: #eeeeee;
-    border-color: #A6A6A6;
-}
-
-.btn-propose:hover {
-    background-color: #1ea91e;
-    color: #eee;
 }
 
 .list-halls-index {

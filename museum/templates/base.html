@@ -36,16 +36,18 @@
                 <a class="nav-link disabled">Книга отзывов</a>
             </li>
         </ul>
-        <form class="form-inline">
+        <form class="form-inline" method="get" action="{% url 'search' %}">
             <div class="input-group">
-                <input type="text" class="form-control search-form-element search-form-input" placeholder="Поиск..."
-                       aria-label="Username"
+                <input type="text" class="form-control search-form-element search-form-input"
+                       placeholder="Поиск..."
+                       name="q"
+                       aria-label="Поиск"
                        aria-describedby="search-button">
-                <a class="input-group-append search-button-container" href="#">
-                    <span class="input-group-text search-form-element" id="search-button">
+                <div class="input-group-append search-button-container">
+                    <button type="submit" class="btn search-form-element" id="search-button">
                         <img class="search-icon" src="{% static 'img/search-icon.svg' %}">
-                    </span>
-                </a>
+                    </button>
+                </div>
             </div>
         </form>
     </div>

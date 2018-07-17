@@ -1,9 +1,21 @@
 {% extends 'hall.html' %}
+{% block title %}
+Результаты поиска: {{ query }} | IT-Museum
+{% endblock %}
 
 {% block exhibit_list_header %}
     <div class="row mb-4">
         <div class="offset-md-2 col-md-8">
-            <h4 class="mb-0">Результаты поиска по "{{ query }}"</h4>
+            <h4 class="mb-0">Результаты поиска по
+                {% if query %}
+                    "{{ query }}"
+                {% else %}
+                    пустому запросу
+                {% endif %}
+            </h4>
         </div>
     </div>
+    {% if not query %}
+    <p class="text-muted mt-5">Странно, но по пустому запросу ничего не находится...</p>
+    {% endif %}
 {% endblock %}

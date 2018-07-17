@@ -122,8 +122,31 @@ body {
     color: #eeeeee;
 }
 
-.search-icon {
+.navbar-icon {
     opacity: 0.5;
+    transition: opacity .3s;
+}
+
+.navbar-icon.navbar-icon-lighten:hover {
+    opacity: 0.75;
+    transition: opacity .3s;
+}
+
+.navbar-icon.navbar-icon-disabled {
+    opacity: .25;
+}
+
+.navbar-nav {
+    width: fit-content;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 15px;
 }
 
 .text-lighter {
@@ -140,7 +163,7 @@ body {
     margin: 20px 25px;
     transition-property: transform, box-shadow;
     transition-duration: .3s;
-    box-shadow: 0 0 45px 0 rgba(0,0,0,1);
+    box-shadow: 0 0 45px 0 rgba(0, 0, 0, 1);
 }
 
 .polaroid > .polaroid-image {
@@ -170,7 +193,7 @@ body {
     transform: scale(1.05);
     transition-property: transform, box-shadow;
     transition-duration: .3s;
-    box-shadow: 0 0 80px 5px rgba(0,0,0,1);
+    box-shadow: 0 0 80px 5px rgba(0, 0, 0, 1);
 }
 
 .no-blue-border {
@@ -223,6 +246,7 @@ body {
     font-size: 14px;
     font-style: italic;
 }
+
 .pagination {
     border-radius: 0;
 }

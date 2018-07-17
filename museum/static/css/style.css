@@ -136,6 +136,19 @@ body {
     opacity: .25;
 }
 
+.navbar-nav {
+    width: fit-content;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 15px;
+}
+
 .text-lighter {
     color: #999;
 }

@@ -6,7 +6,7 @@
 
 {% block content %}
     <h1 class="title mt-5 mb-2">Добро&nbsp;пожаловать в&nbsp;музей&nbsp;IT</h1>
-    <h3 class="subtitle">войди, чтобы начать путешествие по&nbsp;истории</h3>
+    <h3 class="subtitle">начни своё путешествие по&nbsp;истории</h3>
     <div class="mt-5">
         <a href="{% url 'hall' min %}" class="btn btn-lg btn-museum btn-enter">
             начало осмотра
@@ -16,5 +16,8 @@
         <a href="{% url 'hall_list' %}" class="">
             список залов
         </a>
+    </div>
+    <div class="museum-pic">
+        <img src="{% static 'img/MuseumFinal.png' %}">
     </div>
 {% endblock %}

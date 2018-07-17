@@ -4,9 +4,9 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
 from museum.helpers import country_name
-from .models import Hall, Exhibit
+from museum.models import Hall, Exhibit, Proposal
 
-from .models import Hall, Exhibit, Proposal
+from watson import search as watson
 
 
 def index(request):
@@ -89,4 +89,19 @@ def hall_list(request):
         request,
         'hall_list.html',
         {'halls': halls}
+    )
+
+
+def search(request):
+    query = request.GET.get('q', '')
+    if query:
+        results = watson.filter(Exhibit, query)
+    else:
+        results = Exhibit.objects.none()
+
+    return render(
+        request,
+        'search.html',
+        {'exhibits': results,
+         'query': query}
     )

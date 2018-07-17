@@ -7,5 +7,6 @@ urlpatterns = [
     path('halls/', views.hall_list, name='hall_list'),
     re_path(r'^halls/(\d+)/$', views.hall, name='hall'),
     re_path(r'^exhibits/(\d+)/$', views.exhibit, name='exhibit'),
-    path('propose/', views.propose, name='propose')
+    path('propose/', views.propose, name='propose'),
+    path('search/', views.search, name='search')
 ]

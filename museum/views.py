@@ -1,3 +1,5 @@
+import random
+
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
@@ -113,3 +115,10 @@ def search(request):
         {'exhibits': results,
          'query': query}
     )
+
+
+def random_exh(request):
+    exh = random.choice(Exhibit.objects.all())
+    hall_number = exh.hall.number
+
+    return redirect('hall', hall_number=hall_number, exh_id=exh.id)

@@ -7,60 +7,62 @@
 {% block content %}
     <nav aria-label="Навигация по залам" class="mt-5">
         <ul class="pagination justify-content-center">
-{#            {% if hall.number != min %}#}
-{#                <li class="page-item">#}
-{#                    <a class="page-link" href="{% url 'hall' prev %}" aria-label="Предыдущий">#}
-{#                        <span aria-hidden="true">&laquo;</span>#}
-{#                        <span class="sr-only">Предыдущий</span>#}
-{#                    </a>#}
-{#                </li>#}
-{#            {% else %}#}
-{#                <li class="page-item disabled">#}
-{#                    <a class="page-link" tabindex="-1" aria-label="Предыдущий">#}
-{#                        <span aria-hidden="true">&laquo;</span>#}
-{#                        <span class="sr-only">Предыдущий</span>#}
-{#                    </a>#}
-{#                </li>#}
-{#            {% endif %}#}
+            {#            {% if hall.number != min %}#}
+            {#                <li class="page-item">#}
+            {#                    <a class="page-link" href="{% url 'hall' prev %}" aria-label="Предыдущий">#}
+            {#                        <span aria-hidden="true">&laquo;</span>#}
+            {#                        <span class="sr-only">Предыдущий</span>#}
+            {#                    </a>#}
+            {#                </li>#}
+            {#            {% else %}#}
+            {#                <li class="page-item disabled">#}
+            {#                    <a class="page-link" tabindex="-1" aria-label="Предыдущий">#}
+            {#                        <span aria-hidden="true">&laquo;</span>#}
+            {#                        <span class="sr-only">Предыдущий</span>#}
+            {#                    </a>#}
+            {#                </li>#}
+            {#            {% endif %}#}
             {% for h_it in all_halls %}
                 <li class="page-item {% if forloop.counter == hall.number %}active{% endif %}">
                     <a class="page-link" href="{% url 'hall' h_it.number %}">{{ h_it.number }}</a>
                 </li>
             {% endfor %}
-{#            {% if hall.number != max %}#}
-{#                <li class="page-item">#}
-{#                    <a class="page-link" href="{% url 'hall' next %}" aria-label="Следующий">#}
-{#                        <span aria-hidden="true">&raquo;</span>#}
-{#                        <span class="sr-only">Следующий</span>#}
-{#                    </a>#}
-{#                </li>#}
-{#            {% else %}#}
-{#                <li class="page-item disabled">#}
-{#                    <a class="page-link" tabindex="-1" aria-label="Следующий">#}
-{#                        <span aria-hidden="true">&raquo;</span>#}
-{#                        <span class="sr-only">Следующий</span>#}
-{#                    </a>#}
-{#                </li>#}
-{#            {% endif %}#}
+            {#            {% if hall.number != max %}#}
+            {#                <li class="page-item">#}
+            {#                    <a class="page-link" href="{% url 'hall' next %}" aria-label="Следующий">#}
+            {#                        <span aria-hidden="true">&raquo;</span>#}
+            {#                        <span class="sr-only">Следующий</span>#}
+            {#                    </a>#}
+            {#                </li>#}
+            {#            {% else %}#}
+            {#                <li class="page-item disabled">#}
+            {#                    <a class="page-link" tabindex="-1" aria-label="Следующий">#}
+            {#                        <span aria-hidden="true">&raquo;</span>#}
+            {#                        <span class="sr-only">Следующий</span>#}
+            {#                    </a>#}
+            {#                </li>#}
+            {#            {% endif %}#}
         </ul>
     </nav>
-    <div class="row mb-4">
-        <div class="col-md-2 d-flex align-items-center justify-content-center">
-            {% if hall.number != min %}
-                <a href="{% url 'hall' prev %}" class="btn btn-museum">&laquo; Предыдущий зал</a>
-            {% endif %}
+    {% block exhibit_list_header %}
+        <div class="row mb-4">
+            <div class="col-md-2 d-flex align-items-center justify-content-center">
+                {% if hall.number != min %}
+                    <a href="{% url 'hall' prev %}" class="btn btn-museum">&laquo; Предыдущий зал</a>
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <h4 class="mb-0">Зал {{ hall.number }}</h4>
+                <h2 class="mb-3">{{ hall.name }}</h2>
+                <h5 class="text-lighter">{% if hall.epoch %}{{ hall.epoch }}{% else %}&nbsp;{% endif %}</h5>
+            </div>
+            <div class="col-md-2 d-flex align-items-center justify-content-center">
+                {% if hall.number != max %}
+                    <a href="{% url 'hall' next %}" class="btn btn-museum">Следующий зал &raquo;</a>
+                {% endif %}
+            </div>
         </div>
-        <div class="col-md-8">
-            <h4 class="mb-0">Зал {{ hall.number }}</h4>
-            <h2 class="mb-3">{{ hall.name }}</h2>
-            <h5 class="text-lighter">{% if hall.epoch %}{{ hall.epoch }}{% else %}&nbsp;{% endif %}</h5>
-        </div>
-        <div class="col-md-2 d-flex align-items-center justify-content-center">
-            {% if hall.number != max %}
-                <a href="{% url 'hall' next %}" class="btn btn-museum">Следующий зал &raquo;</a>
-            {% endif %}
-        </div>
-    </div>
+    {% endblock %}
     <div class="card-container">
         {% for e in exhibits %}
             <a class="polaroid-link no-blue-border"
@@ -69,7 +71,8 @@
                data-eid="{{ e.id }}">
                 <div class="polaroid">
                     {% with e.images.all|first as image %}
-                        <div class="polaroid-image" src="" style="background-image: url('{{ image.image.url }}')"></div>
+                        <div class="polaroid-image" src=""
+                             style="background-image: url('{{ image.image.url }}')"></div>
                     {% endwith %}
                     <div class="polaroid-caption">
                         <p>{{ e.name }}</p>

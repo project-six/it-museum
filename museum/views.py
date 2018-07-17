@@ -1,7 +1,12 @@
+from django.contrib import messages
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 
 from museum.helpers import country_name
 from .models import Hall, Exhibit
+
+from .models import Hall, Exhibit, Proposal
 
 
 def index(request):
@@ -36,10 +41,32 @@ def hall(request, hall_number):
 
 
 def propose(request):
-    return render(
-        request,
-        'propose.html'
-    )
+    if request.method == "POST":
+        try:
+            if request.POST['name']:
+                name = request.POST['name']
+            else:
+                raise KeyError('Введите имя')
+            if request.POST['description']:
+                description = request.POST['description']
+            else:
+                raise KeyError('Введите описание')
+
+            email = request.POST['email']
+        except KeyError as e:
+            messages.add_message(request, messages.WARNING, str(e))
+            return render(request,
+                          'propose.html')
+        else:
+            proposal = Proposal(name=name, message=description, email=email)
+            proposal.save()
+            messages.add_message(request, messages.SUCCESS, "<b>Спасибо!</b> Ваше предложение было отправлено")
+            return HttpResponseRedirect(reverse('index'))
+    else:
+        return render(
+            request,
+            'propose.html'
+        )
 
 
 def exhibit(request, e_id):

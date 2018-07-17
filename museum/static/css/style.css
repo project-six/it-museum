@@ -111,12 +111,13 @@ body {
 
 .btn-enter {
     background-color: transparent;
-    color: #1ea91e;
-    border-color: #1ea91e;
+    color: #4385f5;
+    border-color: #4385f5;
+    font-size: 22;
 }
 
 .btn-enter:hover {
-    background-color: #1ea91e;
+    background-color: #4385f5;
     border-color: transparent;
     color: #eeeeee;
 }
@@ -207,14 +208,14 @@ body {
 .museum-pic {
     /*margin-top: 100px;*/
     position: absolute;
-    bottom: 40px;
+    bottom: 0px;
     left: 0;
     right: 0;
     text-align: center;
 }
 
 .museum-pic > img {
-    width: 900px;
+    width: 1200px;
 }
 
 .propose-email-description {
@@ -245,7 +246,7 @@ body {
 }
 
 .pagination > .page-item.active > .page-link {
-    color: #25b525;
+    color: #4385f5;
     background-color: transparent;
     border: none;
     font-weight: bold;

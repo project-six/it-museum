@@ -31,17 +31,17 @@
         </a>
     </div>
     <div class="museum-pic">
-        <img src="{% static 'img/MuseumFinal.png' %}" id="img-museum">
+        <img src="{% static 'img/museum.png' %}" id="img-museum">
     </div>
 {% endblock %}
 {% block scripts %}
     <script>
         $("#enter-button")
             .mouseenter(function () {
-                $('#img-museum').attr("src", "{% static 'img/MuseumFinalLight.png' %}");
+                $('#img-museum').attr("src", "{% static 'img/museum-light.png' %}");
             })
             .mouseleave(function () {
-                $('#img-museum').attr("src", "{% static 'img/MuseumFinal.png' %}");
+                $('#img-museum').attr("src", "{% static 'img/museum.png' %}");
             });
     </script>
 {% endblock scripts %}

@@ -17,7 +17,7 @@ class Hall(models.Model):
 class Exhibit(models.Model):
     name = models.CharField(max_length=100, verbose_name="название")
     description = models.TextField(verbose_name="описание")
-    order_year = models.IntegerField(verbose_name="год (для сортировки)")
+    order_number = models.IntegerField(verbose_name="год (для сортировки)")
     epoch = models.CharField(max_length=50, verbose_name="год(-ы)", null=True, blank=True)
     country = models.CharField(max_length=2, verbose_name="код страны", null=True, blank=True)
     hall = models.ForeignKey(Hall, related_name="exhibits", on_delete="RESTRICT", verbose_name="зал")

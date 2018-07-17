@@ -213,3 +213,9 @@ body {
 .museum-pic > img {
     width: 900px;
 }
+
+.propose-email-description {
+    color: #a6a6a6;
+    font-size: 14px;
+    font-style: italic;
+}

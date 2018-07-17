@@ -131,21 +131,22 @@ body {
 
 .polaroid {
     background-color: #fafafa;
-    width: 250px;
-    height: 300px;
+    width: 200px;
+    height: 250px;
     display: inline-flex;
     flex-flow: column;
     padding: 10px 10px 0;
-    margin: 5px 15px;
-    transition: transform .3s;
-
+    margin: 20px 25px;
+    transition-property: transform, box-shadow;
+    transition-duration: .3s;
+    box-shadow: 0 0 45px 0 rgba(0,0,0,1);
 }
 
 .polaroid > .polaroid-image {
     background-size: cover;
     display: block;
-    width: 230px;
-    height: 230px;
+    width: 180px;
+    height: 180px;
     flex: 0 1 auto;
 }
 
@@ -166,7 +167,9 @@ body {
 
 .polaroid-link:hover > .polaroid {
     transform: scale(1.05);
-    transition: transform .3s;
+    transition-property: transform, box-shadow;
+    transition-duration: .3s;
+    box-shadow: 0 0 80px 5px rgba(0,0,0,1);
 }
 
 .no-blue-border {
@@ -218,4 +221,32 @@ body {
     color: #a6a6a6;
     font-size: 14px;
     font-style: italic;
+}
+.pagination {
+    border-radius: 0;
+}
+
+.pagination > .page-item > .page-link {
+    background-color: transparent;
+    color: #a6a6a6;
+    border: none;
+    width: 2.1em;
+    height: 2.1em;
+    border-radius: 5rem;
+    transition-property: background-color, color;
+    transition-duration: .3s;
+}
+
+.pagination > .page-item > .page-link:hover {
+    background-color: rgba(160, 160, 160, 0.15);
+    color: #fafafa;
+    transition-property: background-color, color;
+    transition-duration: .3s;
+}
+
+.pagination > .page-item.active > .page-link {
+    color: #25b525;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
 }

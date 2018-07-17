@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
 from museum.helpers import country_name
@@ -19,7 +19,7 @@ def index(request):
     )
 
 
-def hall(request, hall_number):
+def hall(request, hall_number, exh_id=None):
     h = get_object_or_404(Hall, number=hall_number)
     h_min = Hall.objects.order_by('number').first()
     h_max = Hall.objects.order_by('number').last()
@@ -35,7 +35,8 @@ def hall(request, hall_number):
          'min': h_min.number,
          'max': h_max.number,
          'exhibits': h.exhibits.filter().filter(images__isnull=False).order_by('order_number').distinct(),
-         'all_halls': Hall.objects.all()
+         'all_halls': Hall.objects.all(),
+         'open_exh': exh_id
          }
     )
 
@@ -70,6 +71,13 @@ def propose(request):
 
 
 def exhibit(request, e_id):
+    exh = get_object_or_404(Exhibit, id=e_id)
+    hall_number = exh.hall.number
+
+    return redirect('hall', hall_number=hall_number, exh=exh)
+
+
+def exhibit_data(request, e_id):
     exh = get_object_or_404(Exhibit, id=e_id)
     try:
         country = country_name(exh.country)

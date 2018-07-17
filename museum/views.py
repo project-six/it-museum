@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
@@ -38,16 +39,24 @@ def hall(request, hall_number):
 def propose(request):
     if request.method == "POST":
         try:
-            name = request.POST['name']
-            description = request.POST['description']
-        except KeyError:
-            # TODO display error message
-            render(request,
-                   'propose.html')
+            if request.POST['name']:
+                name = request.POST['name']
+            else:
+                raise KeyError('Введите имя')
+            if request.POST['description']:
+                description = request.POST['description']
+            else:
+                raise KeyError('Введите описание')
+
+            email = request.POST['email']
+        except KeyError as e:
+            messages.add_message(request, messages.WARNING, str(e))
+            return render(request,
+                          'propose.html')
         else:
-            proposal = Proposal(name=name, message=description)
+            proposal = Proposal(name=name, message=description, email=email)
             proposal.save()
-            # TODO redirect to success page
+            messages.add_message(request, messages.SUCCESS, "<b>Спасибо!</b> Ваше предложение было отправлено")
             return HttpResponseRedirect(reverse('index'))
     else:
         return render(

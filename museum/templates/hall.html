@@ -48,7 +48,7 @@
         <div class="row mb-4">
             <div class="col-md-2 d-flex align-items-center justify-content-center">
                 {% if hall.number != min %}
-                    <a href="{% url 'hall' prev %}" class="btn btn-museum">&laquo; Предыдущий зал</a>
+                    <a href="{% url 'hall' hall_number=prev %}" class="btn btn-museum">&laquo; Предыдущий зал</a>
                 {% endif %}
             </div>
             <div class="col-md-8">
@@ -99,14 +99,28 @@
 
 {% block scripts %}
     <script>
-        $('#exhibitModal').on('show.bs.modal', function (event) {
-            const pressed = $(event.relatedTarget);
-            const eid = pressed.data('eid');
-            const e_url = "{% url 'exhibit' 12345 %}".replace(/12345/, eid.toString());
+        {% if open_exh %}
+            // noinspection JSAnnotator
+            const eid = {{ open_exh }};
+            const e_url = "{% url 'exhibit_data' 12345 %}".replace(/12345/, eid.toString());
 
             $.get(e_url, function (data) {
                 $('#modal-imported').html(data.toString());
-            })
-        })
+            });
+            $('#exhibitModal').modal('show');
+        {% endif %}
+
+        $('#exhibitModal').on('show.bs.modal', function (event) {
+            const pressed = $(event.relatedTarget);
+            const eid = pressed.data('eid');
+
+            $(location).attr('href', location.href + 'exhibit/' + eid)
+        });
+
+        $('#exhibitModal').on('hidden.bs.modal', function () {
+            $(location).attr('href', location.href.replace(/exhibit\/\d+\//g,''))
+        });
+
+
     </script>
 {% endblock %}

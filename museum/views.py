@@ -45,16 +45,15 @@ def hall(request, hall_number, exh_id=None):
 
 def propose(request):
     if request.method == "POST":
-        if request.POST['name'] and request.POST['description']:
-            name = request.POST['name']
-            description = request.POST['description']
-        else:
+        if not (request.POST['name'] and request.POST['description']):
             messages.add_message(request, messages.WARNING, str("Вы должны заполнить поля с именем и описанием"))
             return render(request,
                           'propose.html')
 
+        name = request.POST['name']
+        description = request.POST['description']
         email = request.POST['email']
-    
+        
         proposal = Proposal(name=name, message=description, email=email)
         proposal.save()
         messages.add_message(request, messages.SUCCESS, "<b>Спасибо!</b> Ваше предложение было отправлено")

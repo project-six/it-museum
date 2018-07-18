@@ -71,17 +71,6 @@
     <script>
         eModal = $('#exhibitModal');
 
-        eModal.on('show.bs.modal', function (event) {
-            const pressed = $(event.relatedTarget);
-            const eid = pressed.data('eid');
-
-            $(location).attr('href', location.href + 'exhibit/' + eid)
-        });
-
-        eModal.on('hidden.bs.modal', function () {
-            $(location).attr('href', location.href.replace(/exhibit\/\d+\//g, ''))
-        });
-
         {% if open_exh %}
             // noinspection JSAnnotator
             const eid = {{ open_exh }};
@@ -92,5 +81,16 @@
             });
             eModal.modal('show');
         {% endif %}
+
+        eModal.on('show.bs.modal', function (event) {
+            const pressed = $(event.relatedTarget);
+            const eid = pressed.data('eid');
+
+            $(location).attr('href', location.href + 'exhibit/' + eid)
+        });
+
+        eModal.on('hidden.bs.modal', function () {
+            $(location).attr('href', location.href.replace(/exhibit\/\d+\//g, ''))
+        });
     </script>
 {% endblock %}

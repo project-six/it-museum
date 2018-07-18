@@ -6,7 +6,7 @@
 {% block content %}
     <ul class="halls-list mt-3">
         {% for h in halls %}
-            <li><a href="{% url 'hall' h.number %}">{{ h.name }}</a></li>
+            <li><a href="{% url 'hall' hall_number=h.number %}">{{ h.name }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

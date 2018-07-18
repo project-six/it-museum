@@ -7,41 +7,11 @@
 {% block content %}
     <nav aria-label="Навигация по залам" class="mt-5">
         <ul class="pagination justify-content-center">
-            {#            {% if hall.number != min %}#}
-            {#                <li class="page-item">#}
-            {#                    <a class="page-link" href="{% url 'hall' prev %}" aria-label="Предыдущий">#}
-            {#                        <span aria-hidden="true">&laquo;</span>#}
-            {#                        <span class="sr-only">Предыдущий</span>#}
-            {#                    </a>#}
-            {#                </li>#}
-            {#            {% else %}#}
-            {#                <li class="page-item disabled">#}
-            {#                    <a class="page-link" tabindex="-1" aria-label="Предыдущий">#}
-            {#                        <span aria-hidden="true">&laquo;</span>#}
-            {#                        <span class="sr-only">Предыдущий</span>#}
-            {#                    </a>#}
-            {#                </li>#}
-            {#            {% endif %}#}
-            {% for h_it in all_halls %}
+            {% for h in all_halls %}
                 <li class="page-item {% if forloop.counter == hall.number %}active{% endif %}">
-                    <a class="page-link" href="{% url 'hall' h_it.number %}">{{ h_it.number }}</a>
+                    <a class="page-link" href="{% url 'hall' hall_number=h.number %}">{{ h.number }}</a>
                 </li>
             {% endfor %}
-            {#            {% if hall.number != max %}#}
-            {#                <li class="page-item">#}
-            {#                    <a class="page-link" href="{% url 'hall' next %}" aria-label="Следующий">#}
-            {#                        <span aria-hidden="true">&raquo;</span>#}
-            {#                        <span class="sr-only">Следующий</span>#}
-            {#                    </a>#}
-            {#                </li>#}
-            {#            {% else %}#}
-            {#                <li class="page-item disabled">#}
-            {#                    <a class="page-link" tabindex="-1" aria-label="Следующий">#}
-            {#                        <span aria-hidden="true">&raquo;</span>#}
-            {#                        <span class="sr-only">Следующий</span>#}
-            {#                    </a>#}
-            {#                </li>#}
-            {#            {% endif %}#}
         </ul>
     </nav>
     {% block exhibit_list_header %}
@@ -58,7 +28,7 @@
             </div>
             <div class="col-md-2 d-flex align-items-center justify-content-center">
                 {% if hall.number != max %}
-                    <a href="{% url 'hall' next %}" class="btn btn-museum">Следующий зал &raquo;</a>
+                    <a href="{% url 'hall' hall_number=next %}" class="btn btn-museum">Следующий зал &raquo;</a>
                 {% endif %}
             </div>
         </div>
@@ -71,7 +41,7 @@
                data-eid="{{ e.id }}">
                 <div class="polaroid">
                     {% with e.images.all|first as image %}
-                        <div class="polaroid-image" src=""
+                        <div class="polaroid-image"
                              style="background-image: url('{{ image.image.url }}')"></div>
                     {% endwith %}
                     <div class="polaroid-caption">
@@ -99,6 +69,8 @@
 
 {% block scripts %}
     <script>
+        eModal = $('#exhibitModal');
+
         {% if open_exh %}
             // noinspection JSAnnotator
             const eid = {{ open_exh }};
@@ -107,20 +79,18 @@
             $.get(e_url, function (data) {
                 $('#modal-imported').html(data.toString());
             });
-            $('#exhibitModal').modal('show');
+            eModal.modal('show');
         {% endif %}
 
-        $('#exhibitModal').on('show.bs.modal', function (event) {
+        eModal.on('show.bs.modal', function (event) {
             const pressed = $(event.relatedTarget);
             const eid = pressed.data('eid');
 
             $(location).attr('href', location.href + 'exhibit/' + eid)
         });
 
-        $('#exhibitModal').on('hidden.bs.modal', function () {
-            $(location).attr('href', location.href.replace(/exhibit\/\d+\//g,''))
+        eModal.on('hidden.bs.modal', function () {
+            $(location).attr('href', location.href.replace(/exhibit\/\d+\//g, ''))
         });
-
-
     </script>
 {% endblock %}

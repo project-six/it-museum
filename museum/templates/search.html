@@ -1,6 +1,6 @@
 {% extends 'hall.html' %}
 {% block title %}
-Результаты поиска: {{ query }} | IT-Museum
+    Результаты поиска: {{ query }} | IT-Museum
 {% endblock %}
 
 {% block exhibit_list_header %}
@@ -16,6 +16,6 @@
         </div>
     </div>
     {% if not query %}
-    <p class="text-muted mt-5">Странно, но по пустому запросу ничего не находится...</p>
+        <p class="text-muted mt-5">Странно, но по пустому запросу ничего не находится...</p>
     {% endif %}
 {% endblock %}

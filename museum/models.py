@@ -50,6 +50,9 @@ class Proposal(models.Model):
     message = models.TextField(verbose_name="описание", blank=False, null=False)
     sent = models.DateTimeField(default=timezone.now, verbose_name="дата")
 
+    def __str__(self):
+        return self.name + " (ID: " + str(self.id) + ")"
+
     class Meta:
         verbose_name = "предлагаемый экспонат"
         verbose_name_plural = "предлагаемые экспонаты"

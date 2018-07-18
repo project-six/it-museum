@@ -45,26 +45,20 @@ def hall(request, hall_number, exh_id=None):
 
 def propose(request):
     if request.method == "POST":
-        try:
-            if request.POST['name']:
-                name = request.POST['name']
-            else:
-                raise KeyError('Введите имя')
-            if request.POST['description']:
-                description = request.POST['description']
-            else:
-                raise KeyError('Введите описание')
-
-            email = request.POST['email']
-        except KeyError as e:
-            messages.add_message(request, messages.WARNING, str(e))
+        if request.POST['name'] and request.POST['description']:
+            name = request.POST['name']
+            description = request.POST['description']
+        else:
+            messages.add_message(request, messages.WARNING, str("Вы должны заполнить поля с именем и описанием"))
             return render(request,
                           'propose.html')
-        else:
-            proposal = Proposal(name=name, message=description, email=email)
-            proposal.save()
-            messages.add_message(request, messages.SUCCESS, "<b>Спасибо!</b> Ваше предложение было отправлено")
-            return HttpResponseRedirect(reverse('index'))
+
+        email = request.POST['email']
+    
+        proposal = Proposal(name=name, message=description, email=email)
+        proposal.save()
+        messages.add_message(request, messages.SUCCESS, "<b>Спасибо!</b> Ваше предложение было отправлено")
+        return HttpResponseRedirect(reverse('index'))
     else:
         return render(
             request,

@@ -57,7 +57,7 @@ def propose(request):
         proposal = Proposal(name=name, message=description, email=email)
         proposal.save()
         messages.add_message(request, messages.SUCCESS, "<b>Спасибо!</b> Ваше предложение было отправлено")
-        return HttpResponseRedirect(reverse('index'))
+        return HttpResponseRedirect(reverse('propose'))
     else:
         return render(
             request,

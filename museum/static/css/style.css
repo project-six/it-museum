@@ -6,8 +6,8 @@ body {
 
 .btn-enter {
     background-color: transparent;
-    color: #4385f5;
     border-color: #4385f5;
+    color: #4385f5;
     font-size: 22px;
 }
 
@@ -24,39 +24,35 @@ body {
 }
 
 .btn-museum:hover {
-    text-decoration: none;
     background-color: #333;
     border-color: transparent;
     color: #A6A6A6;
+    text-decoration: none;
 }
 
 .btn-propose {
     background-color: #555;
-    color: #ccc;
     border-color: transparent;
-    transition-property: color, background-color, border-color;
+    color: #ccc;
     transition-duration: .3s;
+    transition-property: color, background-color, border-color;
 }
 
 .btn-propose:hover {
     background-color: #333;
-    color: #ccc;
     border-color: #555;
-    transition-property: color, background-color, border-color;
+    color: #ccc;
     transition-duration: .3s;
+    transition-property: color, background-color, border-color;
+}
+
+.halls-list {
+    list-style-type: none;
 }
 
 .halls-list > li > a {
     color: #eee;
     font-size: 32px;
-}
-
-.halls-list > li {
-}
-
-.halls-list {
-
-    list-style-type: none;
 }
 
 .list-halls-index {
@@ -77,19 +73,19 @@ body {
 }
 
 .museum-pic {
-    position: absolute;
     bottom: 0;
     left: 0;
+    position: absolute;
     right: 0;
     text-align: center;
 }
 
 .navbar-brand {
-    font-family: \"Roboto Mono\", \"Monaco\", monospace;
-    text-transform: uppercase;
+    font-family: "Roboto Mono", "Monaco", monospace;
     height: 60px;
     line-height: 60px;
     padding: 0;
+    text-transform: uppercase;
 }
 
 .navbar-icon {
@@ -111,18 +107,18 @@ body {
 }
 
 .navbar-nav {
-    width: fit-content;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
     position: absolute;
     right: 0;
-    left: 0;
-    margin-right: auto;
-    margin-left: auto;
+    width: fit-content;
 }
 
 .navbar-site {
     background-color: #202124;
-    height: 60px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    height: 60px;
 }
 
 .navbar-toggle {
@@ -130,37 +126,38 @@ body {
 }
 
 .no-blue-border {
-    box-shadow: none;
     -webkit-box-shadow: none;
+    box-shadow: none;
     outline-style: none;
 }
 
 .pagination > .page-item > .page-link {
+    align-items: center;
     background-color: transparent;
     border: none;
     border-radius: 5rem;
     color: #a6a6a6;
-    transition-property: background-color, color;
-    transition-duration: .3s;
-    margin: 0 1px;
-    width: 2.4em;
-    height: 2.4em;
     display: inline-flex;
+    height: 2.4em;
     justify-content: center;
-    align-items: center;
+    margin: 0 1px;
+    transition-duration: .3s;
+    transition-property: background-color, color;
+    width: 2.4em;
 }
 
 .pagination > .page-item > .page-link:hover {
+    background-color: rgb(51, 52, 55);
     background-color: rgba(160, 160, 160, 0.15);
     color: #fafafa;
-    transition-property: background-color, color;
     transition-duration: .3s;
+    transition-property: background-color, color;
 }
 
-.pagination > .page-item.active > .page-link {
-    color: #4385f5;
+.pagination > .active > .page-link {
     background-color: transparent;
     border: none;
+    color: #4385f5;
     font-weight: bold;
 }
 
@@ -174,37 +171,37 @@ body {
 
 .polaroid > .polaroid-caption {
     color: #000;
-    height: auto;
-    flex: 1 1 auto;
     display: flex;
+    flex: 1 1 auto;
+    height: auto;
 }
 
 .polaroid > .polaroid-image {
     background-size: cover;
     display: block;
-    width: 180px;
-    height: 180px;
     flex: 0 1 auto;
+    height: 180px;
+    width: 180px;
 }
 
 .polaroid {
     background-color: #fafafa;
-    width: 200px;
-    height: 250px;
+    box-shadow: 0 0 45px 0 rgba(0, 0, 0, 1);
     display: inline-flex;
     flex-flow: column;
-    padding: 10px 10px 0;
+    height: 250px;
     margin: 20px 25px;
-    transition-property: transform, box-shadow;
+    padding: 10px 10px 0;
     transition-duration: .3s;
-    box-shadow: 0 0 45px 0 rgba(0, 0, 0, 1);
+    transition-property: transform, box-shadow;
+    /*width: 200px;*/
 }
 
 .polaroid-link:hover > .polaroid {
-    transform: scale(1.05);
-    transition-property: transform, box-shadow;
-    transition-duration: .3s;
     box-shadow: 0 0 80px 5px rgba(0, 0, 0, 1);
+    transform: scale(1.05);
+    transition-duration: .3s;
+    transition-property: transform, box-shadow;
 }
 
 .polaroid-link:hover {
@@ -221,19 +218,19 @@ body {
     background-color: #333;
     border-color: transparent;
     color: #a6a6a6;
-    transition-property: color, background-color;
     transition-duration: .3s;
+    transition-property: color, background-color;
 }
 
 .propose-field:focus {
     background-color: #444;
     border-color: #333;
-    color: #cccccc;
-    outline-style: none;
     -webkit-box-shadow: none;
     box-shadow: none;
-    transition-property: color, background-color;
+    color: #cccccc;
+    outline-style: none;
     transition-duration: .3s;
+    transition-property: color, background-color;
 }
 
 .search-button-container:hover > #search-button {
@@ -259,16 +256,16 @@ body {
 .search-form-input:focus {
     background-color: #333;
     border-color: #333;
-    color: #cccccc;
-    outline-style: none;
     -webkit-box-shadow: none;
     box-shadow: none;
+    color: #cccccc;
+    outline-style: none;
     transition: background-color .3s;
 }
 
 .subtitle {
-    font-size: 36px;
     color: #ccc;
+    font-size: 36px;
 }
 
 .text-lighter {

@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*e^n*o^j3(2iu&1wt$zerpcd(&*a5g&gfp%)8mu$krqs@)5z$h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '89.108.65.196', 'p6.karamoff.ru']
 

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Зал {{ hall.number }}. {{ hall.name }} | IT-Museum
+{% endblock %}
+
+{% block content %}
+    <nav aria-label="Навигация по залам" class="mt-5">
+        <ul class="pagination justify-content-center">
+            {% for h in all_halls %}
+                <li class="page-item {% if forloop.counter == hall.number %}active{% endif %}">
+                    <a class="page-link" href="{% url 'hall' hall_number=h.number %}">{{ h.number }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    {% block exhibit_list_header %}
+        <div class="row mb-4">
+            <div class="col-md-2 d-flex align-items-center justify-content-center">
+                {% if hall.number != min %}
+                    <a href="{% url 'hall' hall_number=prev %}" class="btn btn-museum">&laquo; Предыдущий зал</a>
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <h4 class="mb-0">Зал {{ hall.number }}</h4>
+                <h2 class="mb-3">{{ hall.name }}</h2>
+                <h5 class="text-lighter">{% if hall.epoch %}{{ hall.epoch }}{% else %}&nbsp;{% endif %}</h5>
+            </div>
+            <div class="col-md-2 d-flex align-items-center justify-content-center">
+                {% if hall.number != max %}
+                    <a href="{% url 'hall' hall_number=next %}" class="btn btn-museum">Следующий зал &raquo;</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endblock %}
+    <div class="card-container">
+        {% for e in exhibits %}
+            <a class="polaroid-link no-blue-border"
+               href="#" data-toggle="modal"
+               data-target="#exhibitModal"
+               data-eid="{{ e.id }}">
+                <div class="polaroid">
+                    {% with e.images.all|first as image %}
+                        <div class="polaroid-image"
+                             style="background-image: url('{{ image.image.url }}')"></div>
+                    {% endwith %}
+                    <div class="polaroid-caption">
+                        <p>{{ e.name }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+    <div class="modal fade" id="exhibitModal" tabindex="-1" role="dialog" aria-labelledby="exhibitName"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div id="modal-imported"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        eModal = $('#exhibitModal');
+
+        {% if open_exh %}
+            // noinspection JSAnnotator
+            const eid = {{ open_exh }};
+            const e_url = "{% url 'exhibit_data' 12345 %}".replace(/12345/, eid.toString());
+
+            $.get(e_url, function (data) {
+                $('#modal-imported').html(data.toString());
+            });
+            eModal.modal('show');
+        {% endif %}
+
+        eModal.on('show.bs.modal', function (event) {
+            const pressed = $(event.relatedTarget);
+            const eid = pressed.data('eid');
+
+            $(location).attr('href', location.href + 'exhibit/' + eid)
+        });
+
+        eModal.on('hidden.bs.modal', function () {
+            $(location).attr('href', location.href.replace(/exhibit\/\d+\//g, ''))
+        });
+    </script>
+{% endblock %}

@@ -57,7 +57,7 @@ def propose(request):
         proposal = Proposal(name=name, message=description, email=email)
         proposal.save()
         messages.add_message(request, messages.SUCCESS, "<b>Спасибо!</b> Ваше предложение было отправлено")
-        return HttpResponseRedirect(reverse('index'))
+        return HttpResponseRedirect(reverse('propose'))
     else:
         return render(
             request,
@@ -95,18 +95,21 @@ def hall_list(request):
     )
 
 
-def search(request):
+def search(request, exh_id=None):
     query = request.GET.get('q', '')
     if query:
         results = watson.filter(Exhibit, query)
     else:
         results = Exhibit.objects.none()
 
+    print(exh_id)
+
     return render(
         request,
         'search.html',
         {'exhibits': results,
-         'query': query}
+         'query': query,
+         'open_exh': exh_id}
     )
 
 

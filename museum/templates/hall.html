@@ -86,7 +86,7 @@
             const pressed = $(event.relatedTarget);
             const eid = pressed.data('eid');
 
-            $(location).attr('href', location.href + 'exhibit/' + eid)
+            $(location).attr('href', location.href.replace(/(?=\/([?]|$))\//g, '/exhibit/' + eid))
         });
 
         eModal.on('hidden.bs.modal', function () {

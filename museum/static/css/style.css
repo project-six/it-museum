@@ -194,7 +194,7 @@ body {
     padding: 10px 10px 0;
     transition-duration: .3s;
     transition-property: transform, box-shadow;
-    /*width: 200px;*/
+    width: 200px;
 }
 
 .polaroid-link:hover > .polaroid {
